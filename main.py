@@ -18,16 +18,17 @@ np.random.seed(1)
 
 synaptic_weights = 2 * np.random.random((3, 1)) - 1
 
-print("Random starting synaptic weights:", synaptic_weights)
+#print("Random starting synaptic weights:", synaptic_weights)
 
-for iteration in range(100000):
+for iteration in range(100):
     input_layer = training_inputs
 
-    outputs = activationFunctions.ssigmoid(np.dot(input_layer, synaptic_weights))
+    outputs = activationFunctions.ReLU(np.dot(input_layer, synaptic_weights))
+    print(np.dot(input_layer, synaptic_weights))
 
     error = training_outputs - outputs
 
-    adjustments = error * activationFunctions.sigmoid_derivative(outputs)
+    adjustments = error * activationFunctions.Sigmoid_derivative(outputs)
 
     synaptic_weights += np.dot(input_layer.T, adjustments)
 

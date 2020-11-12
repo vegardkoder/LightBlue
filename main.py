@@ -7,6 +7,7 @@
 import numpy as np
 import activationFunctions
 
+# ---------- training ---------
 X_train = np.array([[0,0,1],
                     [1,1,1],
                     [1,0,1],
@@ -28,5 +29,11 @@ print("Weigths after training: \n", weights)
 print("Outputs after training: \n", outputs)
 print("Results after training: \n", results)
 
-#user_input = np.array(input("Give me an array"))
-#print(user_input[0])
+# ---------- custom inputs ---------
+
+user_input = np.array([1,1,0])
+user_output = activationFunctions.Sigmoid(np.dot(user_input, weights))
+user_result = np.around(user_output).astype(int)
+
+print("User outputs: \n", user_output)
+print("User result: \n", user_result)

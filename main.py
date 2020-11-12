@@ -8,8 +8,13 @@ import numpy as np
 import activationFunctions
 import timeit
 
-# ---------- training ----------
+# ---------- perceptron ----------
 
+def perceptron(input, weights, bias):
+    outputs = activationFunctions.Sigmoid(np.dot(input, weights)) + bias
+
+# ---------- training ----------
+    
 X_train = np.array([[0,0,1],
                     [1,1,1],
                     [1,0,1],
@@ -19,7 +24,7 @@ y_train = np.array([[0,1,1,0]]).T
 
 weights = 2 * np.random.random((3, 1)) - 1
 
-for i in range(100000):
+for i in range(1000000):
     outputs = activationFunctions.Sigmoid(np.dot(X_train, weights))
     error = y_train - outputs
     adjustments = error * activationFunctions.Sigmoid_derivative(outputs)

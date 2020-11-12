@@ -21,4 +21,26 @@ def ReLU(x):
         val.append(l)
     return np.array(val)
 
+
+
+if __name__ == '__main__':
+    X_train = np.array([[0,0,1],
+                        [1,1,1],
+                        [1,0,1],
+                        [0,1,1]])
+
+    y_train = np.array([[0,1,1,0]]).T
+
+    weights = 2 * np.random.random((3, 1)) - 1
+    bias  = 1
+
+    print(weights)
+
+    outputs = ReLU(np.dot(X_train, weights)) + bias
+    error = y_train - outputs
+    print(outputs)
+    print(Sigmoid_derivative(outputs))
+    adjustments = error * Sigmoid_derivative(outputs)
+    print(adjustments)
+
 #ReLU(np.array([[0,0,1],[1,1,1],[1,0,1],[0,1,1]]))

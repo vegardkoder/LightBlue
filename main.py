@@ -7,31 +7,26 @@
 import numpy as np
 import activationFunctions
 
-training_inputs = np.array([[0,0,1],
-                            [1,1,1],
-                            [1,0,1],
-                            [0,1,1]])
+X_train = np.array([[0,0,1],
+                    [1,1,1],
+                    [1,0,1],
+                    [0,1,1]])
 
-training_outputs = np.array([[0,1,1,0]]).T
+y_train = np.array([[0,1,1,0]]).T
 
-np.random.seed(1)
+weights = 2 * np.random.random((3, 1)) - 1
 
-synaptic_weights = 2 * np.random.random((3, 1)) - 1
-
-#print("Random starting synaptic weights:", synaptic_weights)
-
-for iteration in range(100):
-    input_layer = training_inputs
-
-    outputs = activationFunctions.ReLU(np.dot(input_layer, synaptic_weights))
-    print(np.dot(input_layer, synaptic_weights))
-
-    error = training_outputs - outputs
-
+for iteration in range(100000):
+    outputs = activationFunctions.Sigmoid(np.dot(X_train, weights))
+    error = y_train - outputs
     adjustments = error * activationFunctions.Sigmoid_derivative(outputs)
+    weights += np.dot(X_train.T, adjustments)
 
-    synaptic_weights += np.dot(input_layer.T, adjustments)
+results = np.around(outputs).astype(int)
 
-print("Weigths after training:", synaptic_weights)
+print("Weigths after training: \n", weights)
+print("Outputs after training: \n", outputs)
+print("Results after training: \n", results)
 
-print("Outputs after training", outputs)
+#user_input = np.array(input("Give me an array"))
+#print(user_input[0])

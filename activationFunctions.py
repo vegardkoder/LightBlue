@@ -1,7 +1,12 @@
+#
+# Author: Vegard Hansen Stenberg
+# Date: 11.11.2020
+# The activation functions for LightBlue
+#
+
 import numpy as  np
 
 def Sigmoid(x):
-    print(1 / (1 + np.exp(-x)))
     return 1 / (1 + np.exp(-x))
 
 def Sigmoid_derivative(x):

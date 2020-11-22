@@ -1,0 +1,13 @@
+import numpy as np
+
+class Sigmoid():
+
+    def __init__(self, X, y):
+        self.X = X
+        self.y = y
+        self.wieghts = 2 * np.random.random((3, 1)) - 1
+
+
+    #def train(self):
+
+Sigmoid([[3, 2, 1]], [4, 3, 1])

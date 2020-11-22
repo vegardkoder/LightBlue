@@ -21,8 +21,6 @@ def ReLU(x):
         val.append(l)
     return np.array(val)
 
-
-
 if __name__ == '__main__':
     X_train = np.array([[0,0,1],
                         [1,1,1],

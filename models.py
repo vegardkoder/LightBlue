@@ -8,9 +8,9 @@ class Sigmoid():
 
     def train(self, X, y, iterations):
         for i in range(iterations):
-            outputs = activationFunctions.Sigmoid(np.dot(X, self.weights))
+            outputs = activationFunctions.sigmoid(np.dot(X, self.weights))
             error = y - outputs
-            adjustments = error * activationFunctions.Sigmoid_derivative(outputs)
+            adjustments = error * activationFunctions.sigmoid_derivative(outputs)
             self.weights += np.dot(X.T, adjustments)
         print("Training complete")
 

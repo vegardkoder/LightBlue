@@ -6,10 +6,10 @@
 
 import numpy as  np
 
-def Sigmoid(x):
+def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-def Sigmoid_derivative(x):
+def sigmoid_derivative(x):
     return x * (1 - x)
 
 def ReLU(x):

@@ -18,7 +18,7 @@ y_train = np.array([[0,1,1,0]]).T
 
 model = models.Sigmoid()
 
-model.train(X=X_train, y=y_train, iterations=1000)
+model.train(X_train, y_train, 10000)
 
 user_input = np.array([0,1,0])
 prediction = model.predict(user_input)

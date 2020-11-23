@@ -1,7 +1,32 @@
-Basically just a basic NN for my own learning
-purposes. Started by adding the Sigmoid function and
-it produced good results.
+# LightBlue
 
-To do:
-1. Make the outputs as whole numbers, meaning 0 or 1. (Done)
-2. Make predictions on custom inputs. (Done)
+Have you ever felt the need for using a
+super simple ML libaray? Sure, me too. LightBlue helps
+with easy predictions and the uses are currently very
+limited.
+
+## Avalible models:
+Sigmoid
+
+## Example
+```python
+import numpy as np
+
+import activationFunctions
+import models
+
+X_train = np.array([[0,0,1],
+                    [1,1,1],
+                    [1,0,1],
+                    [0,1,1]])
+
+y_train = np.array([[0,1,1,0]]).T
+
+model = models.Sigmoid()
+
+model.train(X_train, y_train, 10000)
+
+user_input = np.array([0,1,0])
+prediction = model.predict(user_input)
+
+print(prediction)

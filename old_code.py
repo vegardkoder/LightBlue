@@ -5,8 +5,10 @@
 #
 
 import numpy as np
-import activationFunctions
 import timeit
+
+import activationFunctions
+import models
 
 # ---------- perceptron ----------
 

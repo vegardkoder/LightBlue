@@ -5,15 +5,9 @@
 #
 
 import numpy as np
+
 import activationFunctions
-import timeit
-
-# ---------- perceptron ----------
-
-def perceptron(input, weights, bias):
-    outputs = activationFunctions.Sigmoid(np.dot(input, weights)) + bias
-
-# ---------- training ----------
+import models
 
 X_train = np.array([[0,0,1],
                     [1,1,1],
@@ -22,29 +16,11 @@ X_train = np.array([[0,0,1],
 
 y_train = np.array([[0,1,1,0]]).T
 
-weights = 2 * np.random.random((3, 1)) - 1
+model = models.Sigmoid()
 
-for i in range(1000000):
-    outputs = activationFunctions.Sigmoid(np.dot(X_train, weights))
-    error = y_train - outputs
-    adjustments = error * activationFunctions.Sigmoid_derivative(outputs)
-    weights += np.dot(X_train.T, adjustments)
+model.train(X=X_train, y=y_train, iterations=1000)
 
-results = np.around(outputs).astype(int)
+user_input = np.array([0,1,0])
+prediction = model.predict(user_input)
 
-print("Weigths after training: \n", weights)
-print("Outputs after training: \n", outputs)
-print("Results after training: \n", results)
-
-# ---------- custom inputs ----------
-
-user_input = np.array([1,1,0])
-user_output = activationFunctions.Sigmoid(np.dot(user_input, weights))
-user_result = np.around(user_output).astype(int)
-
-print("User outputs: \n", user_output)
-print("User result: \n", user_result)
-
-# ---------- timing the execution ----------
-
-print(f"Execution time: {timeit.timeit()}")
+print(prediction)

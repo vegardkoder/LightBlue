@@ -17,9 +17,19 @@ class Sigmoid():
     def predict(self, X):
         return activationFunctions.Sigmoid(np.dot(X, self.weights))
 
-class LinearRegression():
+class AverageRegression():
     def __init__(self):
         print("Initialized LinearRegression model.")
+
+    def train(self, X):
+        s = 0
+        for x in X:
+            s += x[1] / x[0]
+        self.weight = s / len(X)
+        print("Training complete.")
+
+    def pred(self, X):
+        return X * self.weight;
 
 class ReLU():
     def __init__(self):

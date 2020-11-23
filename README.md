@@ -7,8 +7,9 @@ limited.
 
 ## Avalible models:
 Sigmoid
+AverageRegression
 
-## Example
+## Example for sigmoid
 ```python
 import numpy as np
 
